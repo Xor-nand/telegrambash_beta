@@ -1,5 +1,5 @@
 # this is the beta for the new complete telegram bashbot
-import telegram
+import telegram, socket, time
 import subprocess
 import time
 import os
@@ -13,6 +13,22 @@ from subprocess import check_output, STDOUT, CalledProcessError
 token = open("configs/token.txt", "r").read().strip()
 admin = open("configs/admin_chat_id.txt", "r").read().strip()
 print (" admin : {}".format(admin))
+
+def netcheck():
+	try:
+		socket.create_connection(("www.telegram.org", 80))
+		return True
+	except OSError:
+		logup("!SYS", "net not found", " ")
+		pass
+	return False
+
+time.sleep(5)
+while True:
+	time.sleep(10)
+	flag = netcheck()
+	if flag == True:
+		break
 
 sudoerfile = open("configs/superusers_chat_id.txt", "r")
 forbiddencmds = open("configs/forbiddencmds.txt", "r")
