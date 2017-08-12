@@ -1,0 +1,9 @@
+ !SYS :: started logger 
+ polling started :: sending welcome message  
+ 139852619 :: triggered HELP 
+ 139852619 :: triggered LOGGER : 
+ 	> cat bot.log :: executed DONE 
+ 139852619 :: triggered CREATEAP-nosudo 
+ 185198389 :: triggered HELP 
+ 185198389 :: triggered LOGGER : 
+ 	> cat bot.log :: executed DONE 

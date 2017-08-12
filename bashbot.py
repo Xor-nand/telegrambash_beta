@@ -139,10 +139,11 @@ def help(bot, update):
 
 	logup(update.message.chat_id, "triggered", "HELP")
 	bot.sendMessage(chat_id=update.message.chat_id, text="This bot is not the most featurefull bot ever.", parse_mode=telegram.ParseMode.MARKDOWN)
-	bot.sendMessage(chat_id=update.message.chat_id, text="you can use the command /cmd [command] to execute something in the server", parse_mode=telegram.ParseMode.MARKDOWN)
-	bot.sendMessage(chat_id=update.message.chat_id, text="you can use the command /createap to close this bot.", parse_mode=telegram.ParseMode.MARKDOWN)
-	bot.sendMessage(chat_id=update.message.chat_id, text="you can try the command /kill to close this bot.", parse_mode=telegram.ParseMode.MARKDOWN)
-	bot.sendMessage(chat_id=update.message.chat_id, text="you can try the command /logs to watch the log table.", parse_mode=telegram.ParseMode.MARKDOWN)
+	bot.sendMessage(chat_id=update.message.chat_id, text="you can use the command ´/cmd [command]´ to execute something in the server", parse_mode=telegram.ParseMode.MARKDOWN)
+	bot.sendMessage(chat_id=update.message.chat_id, text="you can use the command ´/createap´ to close this bot.", parse_mode=telegram.ParseMode.MARKDOWN)
+	bot.sendMessage(chat_id=update.message.chat_id, text="you can try the command ´/kill´ to close this bot.", parse_mode=telegram.ParseMode.MARKDOWN)
+	bot.sendMessage(chat_id=update.message.chat_id, text="you can try the command ´/logs´ to watch the log table.", parse_mode=telegram.ParseMode.MARKDOWN)
+	bot.sendMessage(chat_id=update.message.chat_id, text="you can use the command ´/pic´ screen to take a screenshot\nor you can try the command ´/pic cam´ to take a picture with the camera", parse_mode=telegram.ParseMode.MARKDOWN)
 
 def logs(bot, update):
 
@@ -158,6 +159,9 @@ def logs(bot, update):
 			bot.sendMessage(chat_id=thischat, text="`{}`".format(answer), parse_mode=telegram.ParseMode.MARKDOWN )
 	else :
 		bot.sendMessage(chat_id=update.message.chat_id, text="Sorry to tell you, but you're not allowed to execute this command, you can ask @xornand for the permission tho.")
+
+def pic(bot, update):
+	answer = ("I can't take pictures right now, sorry".format(update.message.text))
 
 def echo(bot, update):
 
@@ -193,6 +197,9 @@ dispatcher.add_handler(createap_handler)
 
 logs_handler = CommandHandler('logs', logs)
 dispatcher.add_handler(logs_handler)
+
+pic_handler = CommandHandler('pic', pic)
+dispatcher.add_handler(pic_handler)
 
 echo_handler = MessageHandler(Filters.text, echo)
 dispatcher.add_handler(echo_handler)
